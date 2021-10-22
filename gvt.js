@@ -17,7 +17,7 @@ function imageLoad(rotation){
     }
 
     var img = document.getElementById('animation');
-    img.setAttribute("src", "img/truck/"+actualPicture+".png");
+    img.setAttribute("src", "IMG/TRUCK/"+actualPicture+".png");
 }
 
 window.onkeydown = function (evt){
