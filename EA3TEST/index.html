@@ -4,7 +4,7 @@
     <body>
         
         <h2>Graphical Visualisation Technologies</h2><br>
-        <h3>Einsendeaufgabe 3 - Farbig gefüllte Geometrie</h3><br><br>
+        <h3>Einsendeaufgabe 3 Test - Farbig gefüllte Geometrie</h3><br><br>
         
         Ein bunter Mensch<br>
         <canvas id="canvas" width="500" height="500"></canvas>
@@ -30,7 +30,7 @@
                 'varying vec4 color;'+
                 'void main(){'+
                     'color = col;'+
-                    'gl_Position = vec4(pos*0.1-0.5, 1);'+
+                    'gl_Position = vec4(pos*0.1, 1);'+
                 '}'; 
             var vs = gl.createShader(gl.VERTEX_SHADER);
             gl.shaderSource(vs, vsSource);
