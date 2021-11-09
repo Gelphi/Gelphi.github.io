@@ -9,14 +9,12 @@
         Ein bunter Mensch<br>
         <canvas id="canvas" width="500" height="500"></canvas>
         <script>
-
-            // Get the WebGL context.
+            // Get the WebGL context
             var canvas = document.getElementById('canvas');
             var gl = canvas.getContext('experimental-webgl');
 
             // Pipeline setup.
             gl.clearColor(1, 1, 1, 1);
-
             // Backface culling.
             gl.frontFace(gl.CCW);
             gl.enable(gl.CULL_FACE);
@@ -29,15 +27,15 @@
                 'attribute vec4 col;'+
                 'varying vec4 color;'+
                 'void main(){'+
-                    'color = col;'+
-                    'gl_Position = vec4(pos*0.1-0.5, 1);'+
+                    'color = col;'+                 
+                    'gl_Position = vec4((pos-5.0) * 0.2, 0, 1);'+
                 '}'; 
             var vs = gl.createShader(gl.VERTEX_SHADER);
             gl.shaderSource(vs, vsSource);
             gl.compileShader(vs);
 
             // Compile fragment shader.
-            fsSouce = 'precision mediump float;'+
+            var fsSouce = 'precision mediump float;'+ 
                 'varying vec4 color;'+
                 'void main() {'+
                     'gl_FragColor = color;'+
@@ -53,7 +51,7 @@
             gl.linkProgram(prog);
             gl.useProgram(prog);
 
-               // Vertex data.
+             // Vertex data.
             // Positions to create a christmas tree
             var vertices = new Float32Array([ 4,0, 4,2, 0,2, 2,4, 1,4, 3,6, 2,6, 4,8, 3,8, 5,10, 7,8, 6,8, 8,6, 7,6, 9,4, 8,4, 10,2, 6,2, 6,0 ]);
             // Colors as rgba for christmas tree decorations.
@@ -62,39 +60,35 @@
             var indices = new Uint16Array([ 18,1,0, 18,17,1, 16,3,2, 15,3,16, 14,5,4, 13,5,14, 12,7,6, 11,7,12, 9,8,10 ]);
 
             // Setup vertex buffer object.
-            var vboPos = gl.createBuffer();
-            gl.bindBuffer(gl.ARRAY_BUFFER, vboPos);
+            var vbo = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
             gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
 
             // Connect vertex buffer to attribute variable.
             var posAttrib = gl.getAttribLocation(prog, 'pos');
             gl.vertexAttribPointer(posAttrib, 2, gl.FLOAT, false, 0, 0);
             gl.enableVertexAttribArray(posAttrib);
-            //gl.disableVertexAttibArray(posAttrib);
 
             // Setup color vertex buffer object.
             var vboCol = gl.createBuffer();
             gl.bindBuffer(gl.ARRAY_BUFFER, vboCol);
             gl.bufferData(gl.ARRAY_BUFFER, colors, gl.STATIC_DRAW);
-
             // Bind vertex buffer to attribute variable.
             var colAttrib = gl.getAttribLocation(prog, 'col');
             gl.vertexAttribPointer(colAttrib, 4, gl.FLOAT, false, 0, 0);
             gl.enableVertexAttribArray(colAttrib);
-            //gl.disableVertexAttribArray(colAttrib);
 
             // Setup index buffer object.
             var ibo = gl.createBuffer();
             gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ibo);
-            gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices, 
-                gl.STATIC_DRAW);
+            gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices,
+            gl.STATIC_DRAW);
             ibo.numerOfEmements = indices.length;
 
             // Clear framebuffer and render primitives.
             gl.clear(gl.COLOR_BUFFER_BIT);
-            gl.drawElements(gl.TRIANGLES, ibo.numerOfEmements, 
-                gl.UNSIGNED_SHORT, 0);  
-
-        </script>        
+            gl.drawElements(gl.TRIANGLES, ibo.numerOfEmements,
+            gl.UNSIGNED_SHORT, 0);
+        </script>     
     </body>
 </html> 
