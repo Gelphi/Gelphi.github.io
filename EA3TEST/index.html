@@ -30,7 +30,7 @@
                 'varying vec4 color;'+
                 'void main(){'+
                     'color = col;'+
-                    'gl_Position = vec4(pos*0.1-0.5, 1);'+
+                    'gl_Position = vec4(pos*0.1, 1);'+
                 '}'; 
             var vs = gl.createShader(gl.VERTEX_SHADER);
             gl.shaderSource(vs, vsSource);
@@ -68,7 +68,7 @@
 
             // Connect vertex buffer to attribute variable.
             var posAttrib = gl.getAttribLocation(prog, 'pos');
-            gl.vertexAttribPointer(posAttrib, 2, gl.FLOAT, false, 0, 0);
+            gl.vertexAttribPointer(posAttrib, 3, gl.FLOAT, false, 0, 0);
             gl.enableVertexAttribArray(posAttrib);
             //gl.disableVertexAttibArray(posAttrib);
 
