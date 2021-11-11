@@ -6,7 +6,7 @@
         <h2>Graphical Visualisation Technologies</h2><br>
         <nav>
             <div id='navigation'>
-                <a href='#'>Ohne Farbe</a>
+                <a href='index.html'>Ohne Farbe</a>
                 <a href='color.html'>Mit Farbe</a>
                 <a href='own.html'>Eigene Parametrisierung</a>
             </div>
@@ -95,23 +95,23 @@
             gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
 
             // Setup tris index buffer object. //NUR FÜR FARBE
-            // var iboTris = gl.createBuffer();
-            // gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboTris);
-            // gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, wtIndicesTris, gl.STATIC_DRAW);
-            // iboTris.numberOfElements = wtIndicesTris.length;
-            // gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
+            var iboTris = gl.createBuffer();
+            gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboTris);
+            gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, wtIndicesTris, gl.STATIC_DRAW);
+            iboTris.numberOfElements = wtIndicesTris.length;
+            gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
 
             // Clear framebuffer and render primitives.
             gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
             // Setup rendering tris. // NUR FÜR FARBE
-            // gl.disableVertexAttribArray(colAttrib);
-            // gl.vertexAttrib4f(colAttrib, 0, 0, 1, 0.45);
-            // gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboTris);
-            // gl.drawElements(gl.TRIANGLES, iboTris.numberOfElements, gl.UNSIGNED_SHORT, 0);
+            gl.disableVertexAttribArray(colAttrib);
+            gl.vertexAttrib4f(colAttrib, 160/255, 82/255, 45/255, 1);
+            gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboTris);
+            gl.drawElements(gl.TRIANGLES, iboTris.numberOfElements, gl.UNSIGNED_SHORT, 0);
 
             // Setup rendering lines.
-            gl.vertexAttrib4f(colAttrib, 0, 0, 1, 1);
+            gl.vertexAttrib4f(colAttrib, 255/255, 215/255, 0, 0.45);
             gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboLines);
             gl.drawElements(gl.LINES, iboLines.numberOfElements, gl.UNSIGNED_SHORT, 0);
 
@@ -145,21 +145,21 @@
             gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
 
             // Setup tris index buffer object. //NUR FÜR FARBE
-            // var gobletIboTris = gl.createBuffer();
-            // gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, gobletIboTris);
-            // gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, gIndicesTris, gl.STATIC_DRAW);
-            // gobletIboTris.numberOfElements = gIndicesTris.length;
-            // gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
+            var gobletIboTris = gl.createBuffer();
+            gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, gobletIboTris);
+            gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, gIndicesTris, gl.STATIC_DRAW);
+            gobletIboTris.numberOfElements = gIndicesTris.length;
+            gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
 
             // Setup rendering tris. // NUR FÜR FARBE
-            // gl.disableVertexAttribArray(gobletColAttrib);
-            // gl.vertexAttrib4f(gobletColAttrib, 0, 0, 1, 0.45);
-            // gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, gobletIboTris);
-            // gl.drawElements(gl.TRIANGLES, gobletIboTris.numberOfElements, gl.UNSIGNED_SHORT, 0);
+            gl.disableVertexAttribArray(gobletColAttrib);
+            gl.vertexAttrib4f(gobletColAttrib, 207/255, 181/255, 59/255, 1);
+            gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, gobletIboTris);
+            gl.drawElements(gl.TRIANGLES, gobletIboTris.numberOfElements, gl.UNSIGNED_SHORT, 0);
 
             // Setup rendering lines.
             gl.disableVertexAttribArray(gobletColAttrib);
-            gl.vertexAttrib4f(gobletColAttrib, 0, 0, 1, 1);
+            gl.vertexAttrib4f(gobletColAttrib, 255/255, 223/255, 0, 1);
             gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, gobletIboLines);
             gl.drawElements(gl.LINES, gobletIboLines.numberOfElements, gl.UNSIGNED_SHORT, 0);
 
