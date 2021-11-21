@@ -1,0 +1,50 @@
+<!DOCTYPE html5>
+<html>
+    <head>
+        <script src="ext/gl-matrix.js"></script>
+        <script src="zylinder_vertexData.js"></script>
+        <script src="torus_vertexData.js"></script>
+        <script src="rekursiv.js"></script>
+		<script src="gvt.js"></script>
+		<script type="x-shader/x-vertex" id="vertexshader">
+			attribute vec3 aPosition;
+			attribute vec3 aNormal;
+
+			uniform mat4 uPMatrix;
+			uniform mat4 uMVMatrix;
+
+			varying vec4 vColor;
+
+			void main(){
+				gl_Position = uPMatrix * uMVMatrix * vec4(aPosition, 1.0);
+	
+				vColor = vec4(aNormal.x, aNormal.y, aNormal.z, 1.0);
+				vColor = (vColor + 1.0) / 2.0;
+			}
+		</script>
+		<script type="x-shader/x-fragment" id="fragmentshader">
+			precision mediump float;
+			varying vec4 vColor;
+
+			void main() {
+				gl_FragColor = vColor;
+			}
+		</script>
+    </head>
+    <body onload="app.start()">
+        
+        <h2>Graphical Visualisation Technologies</h2><br>
+        <nav>
+            <div id='navigation'>
+                <a href='index.html'>Grundkörper und Rekursionskugel</a>
+            </div>
+        </nav>
+        <h3>Einsendeaufgabe 5 - Kamerabewegung</h3>
+        <h4>Ein Zylinder, eine rekursive generierte Kugel und ein Torus</h4>
+        Steuerung: W: nach oben, A: nach links, S: nach unten, D: nach rechts <br>
+        <input type="range" min="0" max="4" value="0" id="recursion" onchange="app.start();">
+        <p>Rekursionstiefe: <span id="recVal"></span></p><br>
+        <canvas id="canvas" width="700" height="700"></canvas>
+       
+    </body>
+</html> 
