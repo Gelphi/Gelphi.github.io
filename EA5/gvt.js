@@ -207,7 +207,7 @@ var app = ( function() {
             var sign = evt.shiftKey ? -1 : 1;
 			var key = evt.which ? evt.which : evt.keyCode;
 			var c = String.fromCharCode(key);
-
+			console.log(c);
 
 			// Change projection of scene.
 			switch(c) {
@@ -215,18 +215,37 @@ var app = ( function() {
 					camera.projectionType = "ortho";
                     camera.lrtb = 2;                    
                     break;
-                case('W'):
+                case('&'): //ArrowUp
                     camera.eye[1] += deltaRotate;
                     break;
-                case('A'):
+                case('%'): //ArrowLeft
                     camera.zAngle += deltaRotate;
                     break;
-                case('S'):
+                case('('): //ArrowDown
                     camera.eye[1] -= deltaRotate;
                     break;
-                case('D'):
+                case("'"): //ArrowRight
                     camera.zAngle -= deltaRotate;
-                    break;    
+					break;
+				case('W'):
+					camera.eye[1] += 1 * deltaRotate;
+					camera.center[1] += 1* deltaRotate;
+					break;
+				case('S'):
+					camera.eye[1] -= 1 * deltaRotate;
+					camera.center[1] -= 1* deltaRotate;
+				break;
+				case('A'):
+					camera.eye[0] -= 1 * deltaRotate;
+					camera.center[0] -= 1* deltaRotate;
+				break;
+				case('D'):
+					camera.eye[0] += 1 * deltaRotate;
+					camera.center[0] += 1* deltaRotate;
+				break;
+				case('Z'):
+					camera.lrtb -= sign * 0.2;
+				break;                
 			}
 
 			// Render the scene again on any key pressed.
