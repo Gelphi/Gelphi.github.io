@@ -1,0 +1,49 @@
+<!DOCTYPE html5>
+<html>
+    <head>
+        <script src="ext/gl-matrix.js"></script>
+		<script src="GVT_Src_vertexData_sphere.js"></script>
+		<script src="GVT_Src_vertexData_torus.js"></script>
+		<script src="GVT_Src_vertexData_plane.js"></script>
+		<script src="gvt.js"></script>
+		<script type="x-shader/x-vertex" id="vertexshader">
+			attribute vec3 aPosition;
+			attribute vec3 aNormal;
+
+			uniform mat4 uPMatrix;
+			uniform mat4 uMVMatrix;
+
+			varying vec4 vColor;
+
+			void main(){
+				gl_Position = uPMatrix * uMVMatrix * vec4(aPosition, 1.0);
+	
+				vColor = vec4(aNormal.x, aNormal.y, aNormal.z, 1.0);
+				vColor = (vColor + 1.0) / 2.0;
+			}
+		</script>
+		<script type="x-shader/x-fragment" id="fragmentshader">
+			precision mediump float;
+			varying vec4 vColor;
+
+			void main() {
+				gl_FragColor = vColor;
+			}
+		</script>
+    </head>
+    <body onload="app.start()">
+        
+        <h2>Graphical Visualisation Technologies</h2><br>
+        <!-- <nav>
+            <div id='navigation'>
+                <a href='index.html'>Grundkörper und Rekursionskugel</a>
+            </div>
+        </nav> -->
+        <h3>Einsendeaufgabe 6 - Objekte bewegen - fliegende Kugeln</h3>
+
+        Steuerung: K: Objekte Rotieren, H & Shift+H: Y-Achse, C & Shift+C: X-Achse, D und Shift+D: Zoom In/Out, O: Ortho, F: Frustum, P: Perspective  <br>
+
+        <canvas id="canvas" width="700" height="700"></canvas>
+       
+    </body>
+</html> 
