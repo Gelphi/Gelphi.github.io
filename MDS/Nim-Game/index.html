@@ -1,0 +1,33 @@
+<!DOCTYPE html5>
+<html>
+    <head>
+		<script src="matches-game.js"></script>
+        <script src="input.js"></script>
+        <script src="output.js"></script>			
+    </head>
+    <!-- onload="app.start();" -->
+    <body>       
+        <h2>Moderne Softwareentwicklung</h2>
+        <h3>One-Pile-Nim-Game</h3>
+        <h4>Wer das letzte Streichholz nimmt, gewinnt!</h4>
+        <div id='input'>
+            <div id='start'>
+                <h4>Wähle aus, wer beginnen soll.</h4>
+                <button id='player' onclick='playerStarts();'>Ich starte</button>
+                <button id='ki' onclick='kiStarts();'>Computer startet</button> 
+            </div>
+            <div id='match-count' hidden>
+                <h4>Wähle die Anzahl der Streichhölzer aus.</h4>
+                <input type='number' id='matches' min='7' max='50' value='7'>
+                <button onclick='startGame();'>Starte das Spiel</button>
+            </div>
+            <div id='select' hidden>
+                <h4>Wie viele Streichhölzer möchtest du nehmen?</h4>
+                <button id='btn' onClick='takeMatches(1);'>1</button>
+                <button id='btn1' onClick='takeMatches(2);'>2</button>
+                <button onClick='takeMatches(3);'>3</button>
+            </div>
+        </div>
+        <textarea id='output' rows='30' cols='50' readonly></textarea>
+    </body>
+</html> 
