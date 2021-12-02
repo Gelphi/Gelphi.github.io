@@ -627,7 +627,7 @@ vec2.str = function (a) {
 if(typeof(exports) !== 'undefined') {
     exports.vec2 = vec2;
 }
-;
+
 /* Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -1165,7 +1165,7 @@ vec3.str = function (a) {
 if(typeof(exports) !== 'undefined') {
     exports.vec3 = vec3;
 }
-;
+
 /* Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -1690,7 +1690,7 @@ vec4.str = function (a) {
 if(typeof(exports) !== 'undefined') {
     exports.vec4 = vec4;
 }
-;
+
 /* Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -1929,7 +1929,7 @@ mat2.str = function (a) {
 if(typeof(exports) !== 'undefined') {
     exports.mat2 = mat2;
 }
-;
+
 /* Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -2184,7 +2184,7 @@ mat2d.str = function (a) {
 if(typeof(exports) !== 'undefined') {
     exports.mat2d = mat2d;
 }
-;
+
 /* Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -2664,7 +2664,7 @@ mat3.str = function (a) {
 if(typeof(exports) !== 'undefined') {
     exports.mat3 = mat3;
 }
-;
+
 /* Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -3569,7 +3569,7 @@ mat4.str = function (a) {
 if(typeof(exports) !== 'undefined') {
     exports.mat4 = mat4;
 }
-;
+
 /* Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -4099,7 +4099,7 @@ quat.str = function (a) {
 if(typeof(exports) !== 'undefined') {
     exports.quat = quat;
 }
-;
+
 
 
 
