@@ -4,10 +4,6 @@ const minimumMatches = 7;
 var lastRemovedNumber = 3;
 var gameStatus = false;
 
-Window.onload = function(){
-    cleanActions();
-}
-
 function setMatchNumber(number) {
     matchNumber = number;
 }
