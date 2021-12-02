@@ -44,18 +44,22 @@ function kiMatchNumber() {
 function kiSelection() {
     if (getGameStatus() == true) {
         if (getRest() == 0) {
-            displayActions('Die Ki nimmt 3 Streichhölzer');
+            displayActions('Die Ki nimmt 3 Streichhölzer!');
             removeMatches(3);
         }
         if (getRest() == 1) {
-            removeMatches(4 - getLastRemovedNumber());
+            var removingMatches = 4 - getLastRemovedNumber();
+            displayActions('Die Ki nimmt ' + removingMatches + ' Streichhölzer!');
+            removeMatches(removingMatches);
         }
         if (getRest() > 1) {
+            displayActions('Die Ki nimmt ' + getRest() + ' Streichhölzer!');
             removeMatches((getRest()));
         }
     }
     if (gameOver() == true) {
         displayActions('Du hast verloren! Die Ki hat hat gewonnen!');
+        displayActions('Um das Spiel neu zu beginnen, lade die Seite erneut.')
         hideHtml('select');
     }
 }
