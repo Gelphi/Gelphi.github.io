@@ -1,3 +1,5 @@
+    var textfield;  
+
     function displayMatches(number){
         var matches='';
         for(var i = 0; i<number; i++){
@@ -7,7 +9,7 @@
     }
 
     function displayActions(action){
-        var textfield = document.getElementById('output');
+        textfield = document.getElementById('output');
         textfield.value += action + '\n';
     }
 
@@ -19,4 +21,8 @@
     function hideHtml(id){
         var div = document.getElementById(id);
         div.hidden=true;
+    }
+    function cleanActions(){
+        textfield = document.getElementById('output');
+        textfield.value = '';
     }

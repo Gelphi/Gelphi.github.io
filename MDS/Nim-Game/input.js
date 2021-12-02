@@ -1,4 +1,5 @@
 function playerStarts(){
+    cleanActions();
     displayActions('Der Spieler beginnt!');
     showHtml('select');
     kiMatchNumber();
@@ -7,6 +8,7 @@ function playerStarts(){
 }
 
 function kiStarts(){
+    cleanActions();
     displayActions('Die KI beginnt!');
     displayActions('Wähle die Anzahl der Streichhölzer');
     showHtml('match-count');
@@ -15,19 +17,21 @@ function kiStarts(){
 }
 
 function startGame(){
-    //Eingabe überprüfen!
     var matchCount = document.getElementById('matches');
-    setMatchNumber(matchCount.value);
-    displayActions('Das Spiel startet mit ' + matchCount.value + ' Streichhölzern!');
-    displayMatches(matchCount.value);
-    setGameStatus();
-    kiSelection();
-    showHtml('select');
-    hideHtml('match-count');
+    if(isBetween(matchCount.value)){
+        setMatchNumber(matchCount.value);
+        displayActions('Das Spiel startet mit ' + matchCount.value + ' Streichhölzern!');
+        displayMatches(matchCount.value);
+        setGameStatus();
+        kiSelection();
+        showHtml('select');
+        hideHtml('match-count');
+    }else{
+        alert('Geben Sie eine andere Zahl zwischen 7 und 50 ein!');
+    }
 }
 
 function takeMatches(number){
-    //check die Anzahl >=1 & <=3
     displayActions('Du hast '+ number + ' Streichhölzer genommen.');    
     removeMatches(number);
     kiSelection();

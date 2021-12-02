@@ -4,75 +4,81 @@ const minimumMatches = 7;
 var lastRemovedNumber = 3;
 var gameStatus = false;
 
-function setMatchNumber(number){
+Window.onload = function(){
+    cleanActions();
+}
+
+function setMatchNumber(number) {
     matchNumber = number;
 }
 
-function getMatchNumber(){
+function getRest(){
+    return getMatchNumber() % 4;
+}
+
+function getMatchNumber() {
     return matchNumber;
 }
 
-function getLastRemovedNumber(){
+function getLastRemovedNumber() {
     return lastRemovedNumber;
 }
 
-function setLastRemovedNumber(number){
+function setLastRemovedNumber(number) {
     lastRemovedNumber = number;
 }
 
-function removeMatches(number){
-    var matches=getMatchNumber()-number;
+function removeMatches(number) {
+    var matches = getMatchNumber() - number;
     setLastRemovedNumber(number);
     setMatchNumber(matches);
     displayActions(getMatchNumber() + ' bleiben übrig!');
     displayMatches(matches);
 }
 
-function kiMatchNumber(){
-    if(gameOver()==false){
-        matchNumber = getStartingNumber();      
-        displayActions('Das Spiel startet mit '+ matchNumber + ' Streichhölzern!');
+function kiMatchNumber() {
+    if (gameOver() == false) {
+        matchNumber = getStartingNumber();
+        displayActions('Das Spiel startet mit ' + matchNumber + ' Streichhölzern!');
         displayMatches(matchNumber);
         setGameStatus();
     }
 }
 
-function kiSelection(){
-    var matchNumber=getMatchNumber();//gucken
-
-    if(getGameStatus() == true){
-        if(matchNumber %4 == 0){
+function kiSelection() {
+    if (getGameStatus() == true) {
+        if (getRest() == 0) {
             displayActions('Die Ki nimmt 3 Streichhölzer');
-            removeMatches(3);//Woher die Nummer?
+            removeMatches(3);
         }
-        if(matchNumber %4 == 1){
-            removeMatches(4-getLastRemovedNumber());
+        if (getRest() == 1) {
+            removeMatches(4 - getLastRemovedNumber());
         }
-        if(matchNumber %4 > 1){
-            removeMatches((matchNumber % 4));
+        if (getRest() > 1) {
+            removeMatches((getRest()));
         }
     }
-    if(gameOver()==true){
+    if (gameOver() == true) {
         displayActions('Du hast verloren! Die Ki hat hat gewonnen!');
         hideHtml('select');
-    }          
+    }
 }
 
-function setGameStatus(){
-    if(gameStatus == false){
+function setGameStatus() {
+    if (gameStatus == false) {
         gameStatus = true;
-    }else{
+    } else {
         gameStatus = false;
-    }        
+    }
 }
 
-function getGameStatus(){
+function getGameStatus() {
     return gameStatus;
 }
 
-function gameOver(){
-    if(getGameStatus()){
-        if(getMatchNumber() == 0){
+function gameOver() {
+    if (getGameStatus()) {
+        if (getMatchNumber() == 0) {
             setGameStatus();
             return true;
         }
@@ -80,15 +86,25 @@ function gameOver(){
     return false;
 }
 
-function getRandomInteger(){
+function getRandomInteger() {
     return Math.floor(Math.random() * (maximumMatches - minimumMatches)) + minimumMatches;
 }
 
-function getStartingNumber(){
+function getStartingNumber() {
     var number = getRandomInteger();
-    if((number%4)==0 ){
+    if ((number % 4) == 0) {
         return number;
-    }else{        
+    } else {
         return getStartingNumber();
     }
 }
+
+function isBetween(number){
+    if(number>=minimumMatches){
+        if(number<maximumMatches){
+                    return true;
+        }
+    }
+    return false;    
+}
+
