@@ -1,45 +1,9 @@
-var matchNumber = 0;
+let matchNumber = 0;
 const maximumMatches = 51;
 const minimumMatches = 7;
-var lastRemovedNumber = 3;
-var gameStatus = false;
+let lastRemovedNumber = 3;
+let gameStatus = false;
 
-function setMatchNumber(number) {
-    matchNumber = number;
-}
-
-function getRest(){
-    return getMatchNumber() % 4;
-}
-
-function getMatchNumber() {
-    return matchNumber;
-}
-
-function getLastRemovedNumber() {
-    return lastRemovedNumber;
-}
-
-function setLastRemovedNumber(number) {
-    lastRemovedNumber = number;
-}
-
-function removeMatches(number) {
-    var matches = getMatchNumber() - number;
-    setLastRemovedNumber(number);
-    setMatchNumber(matches);
-    displayActions(getMatchNumber() + ' bleiben übrig!');
-    displayMatches(matches);
-}
-
-function kiMatchNumber() {
-    if (gameOver() == false) {
-        matchNumber = getStartingNumber();
-        displayActions('Das Spiel startet mit ' + matchNumber + ' Streichhölzern!');
-        displayMatches(matchNumber);
-        setGameStatus();
-    }
-}
 
 function kiSelection() {
     if (getGameStatus() == true) {
@@ -48,7 +12,7 @@ function kiSelection() {
             removeMatches(3);
         }
         if (getRest() == 1) {
-            var removingMatches = 4 - getLastRemovedNumber();
+            let removingMatches = 4 - getLastRemovedNumber();
             displayActions('Die Ki nimmt ' + removingMatches + ' Streichhölzer!');
             removeMatches(removingMatches);
         }
@@ -64,16 +28,21 @@ function kiSelection() {
     }
 }
 
-function setGameStatus() {
-    if (gameStatus == false) {
-        gameStatus = true;
-    } else {
-        gameStatus = false;
-    }
+function removeMatches(number) {
+    let matches = getMatchNumber() - number;
+    setLastRemovedNumber(number);
+    setMatchNumber(matches);
+    displayActions(getMatchNumber() + ' bleiben übrig!');
+    displayMatches(matches);
 }
 
-function getGameStatus() {
-    return gameStatus;
+function kiMatchNumber() {
+    if (gameOver() == false) {
+        matchNumber = getStartingNumber();
+        displayActions('Das Spiel startet mit ' + matchNumber + ' Streichhölzern!');
+        displayMatches(matchNumber);
+        setGameStatus();
+    }
 }
 
 function gameOver() {
@@ -86,19 +55,6 @@ function gameOver() {
     return false;
 }
 
-function getRandomInteger() {
-    return Math.floor(Math.random() * (maximumMatches - minimumMatches)) + minimumMatches;
-}
-
-function getStartingNumber() {
-    var number = getRandomInteger();
-    if ((number % 4) == 0) {
-        return number;
-    } else {
-        return getStartingNumber();
-    }
-}
-
 function isBetween(number){
     if(number>=minimumMatches){
         if(number<maximumMatches){
@@ -108,3 +64,47 @@ function isBetween(number){
     return false;    
 }
 
+function setMatchNumber(number) {
+    matchNumber = number;
+}
+
+function setGameStatus() {
+    if (gameStatus == false) {
+        gameStatus = true;
+    } else {
+        gameStatus = false;
+    }
+}
+
+function setLastRemovedNumber(number) {
+    lastRemovedNumber = number;
+}
+
+function getRandomInteger() {
+    return Math.floor(Math.random() * (maximumMatches - minimumMatches)) + minimumMatches;
+}
+
+function getStartingNumber() {
+    let number = getRandomInteger();
+    if ((number % 4) == 0) {
+        return number;
+    } else {
+        return getStartingNumber();
+    }
+}
+
+function getGameStatus() {
+    return gameStatus;
+}
+
+function getRest(){
+    return getMatchNumber() % 4;
+}
+
+function getMatchNumber() {
+    return matchNumber;
+}
+
+function getLastRemovedNumber() {
+    return lastRemovedNumber;
+}

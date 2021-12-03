@@ -17,7 +17,7 @@ function kiStarts(){
 }
 
 function startGame(){
-    var matchCount = document.getElementById('matches');
+    let matchCount = document.getElementById('matches');
     if(isBetween(matchCount.value)){
         setMatchNumber(matchCount.value);
         displayActions('Das Spiel startet mit ' + matchCount.value + ' Streichhölzern!');

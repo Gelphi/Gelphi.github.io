@@ -1,8 +1,8 @@
-    var textfield;  
+    let textfield;  
 
     function displayMatches(number){
         var matches='';
-        for(var i = 0; i<number; i++){
+        for(let i = 0; i<number; i++){
             matches += '|'; 
         }
         displayActions(matches);
@@ -14,12 +14,12 @@
     }
 
     function showHtml(id){
-        var div = document.getElementById(id);
+        let div = document.getElementById(id);
         div.hidden=false;
 
     }
     function hideHtml(id){
-        var div = document.getElementById(id);
+        let div = document.getElementById(id);
         div.hidden=true;
     }
     function cleanActions(){
