@@ -11,12 +11,12 @@ function kiSelection() {
             displayActions('Die Ki nimmt 3 Streichhölzer!');
             removeMatches(3);
         }
-        if (getRest() == 1) {
+        else if (getRest() == 1) {
             let removingMatches = 4 - getLastRemovedNumber();
             displayActions('Die Ki nimmt ' + removingMatches + ' Streichhölzer!');
             removeMatches(removingMatches);
         }
-        if (getRest() > 1) {
+        else if (getRest() > 1) {
             displayActions('Die Ki nimmt ' + getRest() + ' Streichhölzer!');
             removeMatches((getRest()));
         }
