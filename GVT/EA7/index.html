@@ -1,0 +1,53 @@
+<!DOCTYPE html5>
+<html lang='de'>
+    <head>
+		<title>MDS</title>
+        <script src="ext/gl-matrix.js"></script>
+		<script src="GVT_Src_vertexData_sphere.js"></script>
+		<script src="GVT_Src_vertexData_plane.js"></script>
+		<script src="GVT_Src_vertexData_torus.js"></script>
+		<script src="zylinder_vertexData.js"></script>
+
+		<script src="gvt.js"></script>
+		<script type="x-shader/x-vertex" id="vertexshader">
+			precision mediump float;
+
+			attribute vec3 aPosition;
+			attribute vec3 aNormal;
+
+			uniform mat4 uPMatrix;
+			uniform mat4 uMVMatrix;
+			uniform mat3 uNMatrix;
+			uniform vec4 uColor;
+
+			varying vec4 vColor;
+
+			void main(){
+				gl_Position = uPMatrix * uMVMatrix * vec4(aPosition, 1.0);
+	
+				vec3 tNormal = uNMatrix * aNormal;
+				vColor = uColor;
+			}
+		</script>
+		<script type="x-shader/x-fragment" id="fragmentshader">
+			precision mediump float;
+			varying vec4 vColor;
+
+			void main() {
+				 
+				gl_FragColor = vec4(gl_FragCoord.z, gl_FragCoord.z, gl_FragCoord.z, 1); 
+			}
+		</script>
+    </head>
+    <body onload="app.start()">
+        
+        <h2>Graphical Visualisation Technologies</h2><br>
+        <h3>Einsendeaufgabe 7 - Z-Buffer Visualisierung</h3>
+		<h4>Ein Ufo umkreist einen Planeten</h4>
+
+        Steuerung: Bewegung über die Pfeiltasten<br>K: Plane rotieren, H & Shift+H: Y-Achse, C & Shift+C: X-Achse, D und Shift+D: Zoom In/Out,<br> O: Ortho, F: Frustum, P: Perspective  <br>
+
+        <canvas id="canvas" width="700" height="700"></canvas>
+       
+    </body>
+</html> 
