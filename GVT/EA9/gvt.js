@@ -404,6 +404,18 @@ var app = ( function() {
 					// Camera near plane dimensions.
 					camera.lrtb += sign * 0.1;
 					break;
+				case('&'): //ArrowUp
+                    camera.eye[1] += deltaRotate;
+                    break;
+                case('%'): //ArrowLeft
+                    camera.zAngle += deltaRotate;
+                    break;
+                case('('): //ArrowDown
+                    camera.eye[1] -= deltaRotate;
+                    break;
+                case("'"): //ArrowRight
+                    camera.zAngle -= deltaRotate;
+					break;
 			}
 			// Render the scene again on any key pressed.
 			render();
