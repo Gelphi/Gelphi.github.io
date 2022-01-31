@@ -96,7 +96,8 @@ var app = (function () {
         // NEW DIM
         // render
         // Generate or load data.
-        Data.generateData();
+        //Data.generateData();
+        Data.readFileFromServer('data/iris/iris.data');
         //Data.readFileFromServer('data/HabermansSurvivalDataSet/haberman.data');
     }
 
