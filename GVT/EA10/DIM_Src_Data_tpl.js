@@ -174,11 +174,30 @@ var Data = (function () {
         label = (typeof label !== 'undefined') ? label : 1;
         data = (typeof data !== 'undefined') ? data : [];
 
-        // DIM BEGIN EXERCISE Synthetische Daten generieren
-        data.push([0,0,0,0]); // some dummy data
-        data.push([2,0,0,1]); // some dummy data
-        data.push([1,1,0,2]); // some dummy data
-        // DIM END EXERCISE Synthetische Daten generieren
+        var du = 2 * Math.PI / n;
+
+        var dv = Math.PI / n;
+     
+        // Loop angle u.
+     
+        for (var i = 0, u = 0; i <= n; i++, u += du) {
+     
+            // Loop angle v.
+     
+            for (var j = 0, v = 0; j <= n; j++, v += dv) {
+     
+                var x = offset[0]+ r * Math.sin(v) * Math.cos(u);
+     
+                var y = offset[1]+ r * Math.sin(v) * Math.sin(u);
+     
+                var z = offset[2]+ r * Math.cos(v);
+     
+     
+                data.push([x,y,z,label]);
+     
+            }
+     
+        }
     }
 
     // NEW DIM
@@ -188,8 +207,13 @@ var Data = (function () {
         data = [];
 
         // Generate one sphere.
-        data.experiment = "one sphere";
-        generateSphereData(16, 1,[0,0,0],0);
+        //data.experiment = "one sphere";
+        //generateSphereData(16, 1,[0,0,0],0);
+        data.experiment = "separate spheres";
+
+        data = generateSphereData(16, 1,[0,0,0],0,data);
+     
+        data = generateSphereData(16, 1,[3,0,0],1,data);
 
         splitDataAndLabels();
         preprocessLabels();
