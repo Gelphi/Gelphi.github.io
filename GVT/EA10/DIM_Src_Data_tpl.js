@@ -207,8 +207,12 @@ var Data = (function () {
         data = [];
 
         // Generate one sphere.
-        data.experiment = "one sphere";
-        generateSphereData(16, 1,[0,0,0],0);
+        //data.experiment = "one sphere";
+        //generateSphereData(16, 1,[0,0,0],0);
+
+        data.experiment = "separate spheres";
+        generateSphereData(16, 1,[0,0,0],0);     
+        generateSphereData(16, 1,[3,0,0],1);
 
         splitDataAndLabels();
         preprocessLabels();
