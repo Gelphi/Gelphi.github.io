@@ -836,8 +836,8 @@ var app = (function () {
     // NEW DIM
     function init_tSNE(data) {
         var opt = {};
-        opt.epsilon = 5; // epsilon is learning rate (10 = default)
-        opt.perplexity = 24; // roughly how many neighbors each point influences (30 = default)
+        opt.epsilon = 10; // epsilon is learning rate (10 = default)
+        opt.perplexity = 20; // roughly how many neighbors each point influences (30 = default)
         opt.dim = 3; // dimensionality of the embedding (2 = default)
 
         tSNE = new tsnejs.tSNE(opt); // create a tSNE instance
