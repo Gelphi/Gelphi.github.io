@@ -147,13 +147,13 @@ var Data = (function () {
     function preprocessLabels() {
         for (var i = 0; i < labels.length; i++) {
             switch (labels[i]) {
-                case "Iris-setosa" :
+                case "Seed-Kama" :
                     labels[i] = 0;
                     break;
-                case "Iris-versicolor" :
+                case "Seed-Rosa" :
                     labels[i] = 1;
                     break;
-                case "Iris-virginica" :
+                case "Seed-Canadian" :
                     labels[i] = 2;
                     break;
             }
