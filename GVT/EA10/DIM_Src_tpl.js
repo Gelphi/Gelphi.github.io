@@ -97,7 +97,7 @@ var app = (function () {
         // render
         // Generate or load data.
         //Data.generateData();
-        Data.readFileFromServer('data/iris/iris.data');
+        Data.readFileFromServer('data/seeds/seeds_dataset.csv');
         //Data.readFileFromServer('data/HabermansSurvivalDataSet/haberman.data');
     }
 
